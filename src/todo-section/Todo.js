@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { deleteTodo, editTodo } from '../actions';
-import { Button, Input } from '../stelios-ui';
+import { Button, List } from '../stelios-ui';
 
 export class Todo extends React.Component {
   state = {
@@ -22,8 +22,8 @@ export class Todo extends React.Component {
   };
 
   editTodo = () => {
-    const { edit } = this.state;
-    if (edit) {
+    const { edit, todo } = this.state;
+    if (edit && todo) {
       this.saveTodo();
     } else {
       this.setState({ edit: true });
@@ -45,31 +45,33 @@ export class Todo extends React.Component {
     const { item } = this.props;
     const { edit } = this.state;
     return (
-      <div>
+      <List.Item onClick={!edit ? this.editTodo : null}>
         {edit ? (
-          <Input
+          <List.ItemInput
             type="text"
             placeholder="add a todo item"
             defaultValue={item.text}
             onChange={this.onChange}
           />
         ) : (
-          <span>{item.text}</span>
+          <List.ItemText>{item.text}</List.ItemText>
         )}
-        {edit && (
-          <Button remove onClick={this.cancelEdit}>
-            Cancel
+        <List.ItemAside>
+          {edit && (
+            <Button remove onClick={this.cancelEdit}>
+              Cancel
+            </Button>
+          )}
+          <Button remove onClick={this.editTodo}>
+            {edit ? 'Save' : 'Edit'}
           </Button>
-        )}
-        <Button remove onClick={this.editTodo}>
-          {edit ? 'Save' : 'Edit'}
-        </Button>
-        {!edit && (
-          <Button remove onClick={this.removeTodo}>
-            x
-          </Button>
-        )}
-      </div>
+          {!edit && (
+            <Button remove onClick={this.removeTodo}>
+              x
+            </Button>
+          )}
+        </List.ItemAside>
+      </List.Item>
     );
   }
 }

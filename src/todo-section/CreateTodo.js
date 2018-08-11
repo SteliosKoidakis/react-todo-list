@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { addTodo } from '../actions';
-import { Button, Input } from '../stelios-ui';
+import { InputGroup } from '../stelios-ui';
 
 export class CreateTodo extends React.Component {
   state = {
@@ -23,17 +23,17 @@ export class CreateTodo extends React.Component {
   render() {
     const { todo } = this.state;
     return (
-      <div>
-        <Input
+      <InputGroup>
+        <InputGroup.Input
           type="text"
           placeholder="add a todo item"
           defaultValue={todo}
           onChange={this.onChange}
         />
-        <Button disabled={!todo} onClick={this.submitTodo}>
-          Add Todo
-        </Button>
-      </div>
+        <InputGroup.Button disabled={!todo} onClick={this.submitTodo}>
+          Add
+        </InputGroup.Button>
+      </InputGroup>
     );
   }
 }

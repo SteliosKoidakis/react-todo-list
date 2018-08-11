@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Container, Row, Column } from '../stelios-ui';
+import { Container, Row, Column, List } from '../stelios-ui';
 import CreateTodo from './CreateTodo';
 import Todo from './Todo';
 
@@ -12,14 +12,18 @@ export class App extends React.Component {
       <div>
         <Container>
           <Row>
-            <CreateTodo />
+            <Column mobile="12" desktop="12">
+              <CreateTodo />
+            </Column>
           </Row>
           <Row>
             <Column mobile="12" desktop="12">
-              {this.props.todos
-                && this.props.todos.map(item => (
-                  <Todo key={item.id} item={item} />
-                ))}
+              <List>
+                {this.props.todos
+                  && this.props.todos.map(item => (
+                    <Todo key={item.id} item={item} />
+                  ))}
+              </List>
             </Column>
           </Row>
         </Container>

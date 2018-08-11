@@ -13,8 +13,6 @@ const Button = styled.button`
   line-height: ${({ remove }) => (remove ? '20px' : '40px')};
   font-weight: 200;
   padding: ${({ remove }) => (remove ? '0 10px' : '0 20px')};
-  border-radius: ${({ remove }) => (remove ? '15px' : '')};
-  text-transform: uppercase;
   transition: all 300ms ease;
   &:hover {
     color: ${({ remove }) => (remove ? palette.danger : palette.secondary)};
@@ -24,5 +22,6 @@ const Button = styled.button`
     color: ${palette.mainLight};
     background: ${palette.secondaryLight};
   }
+  margin-left: 10px;
 `;
 export default Button;

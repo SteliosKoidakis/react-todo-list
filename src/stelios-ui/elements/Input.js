@@ -11,9 +11,7 @@ const Input = styled.input`
   line-height: 40px;
   font-weight: 200;
   padding: 0 30px;
-  text-transform: uppercase;
   transition: all 300ms ease;
-  width: 100%;
   box-sizing: border-box;
 `;
 
