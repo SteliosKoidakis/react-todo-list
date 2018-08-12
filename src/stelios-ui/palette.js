@@ -6,5 +6,8 @@ export default {
   secondaryLight: '#CAD8E6',
   danger: '#F15A6D',
   dangerLight: '#FFC4CC',
-  dangerDark: '#B8283B'
+  dangerDark: '#B8283B',
+  alert: '#FFC845',
+  success: '#6EC190',
+  white: '#ffffff'
 };

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import Input from './Input';
 import Button from './Button';
+import textStyle from '../text-styles';
 
 const InputGroup = styled.div`
   width: 100%;
@@ -11,10 +12,11 @@ const InputGroup = styled.div`
 
 InputGroup.Input = styled(Input)`
   flex-grow: 1;
+  width: inherit;
 `;
 
 InputGroup.Button = styled(Button)`
-  font-size: 15px;
+  font-size: ${textStyle.smallerText};
 `;
 
 export default InputGroup;

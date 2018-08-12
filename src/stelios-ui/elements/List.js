@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import palette from '../palette';
+import textStyle from '../text-styles';
 
 const List = styled.ul`
   padding-left: 0;
@@ -8,34 +9,35 @@ const List = styled.ul`
 `;
 
 List.Item = styled.li`
+  font-size: ${textStyle.smallText};
+  line-height: 40px;
+  font-weight: ${textStyle.boldWeight};
+  display: flex;
+  padding: 0 30px;
+  margin-bottom: 10px;
   background: ${palette.secondaryLight};
   color: ${palette.secondary};
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 40px;
-  font-weight: 900;
-  padding: 0 30px;
   transition: all 300ms ease;
   box-sizing: border-box;
-  margin-bottom: 10px;
-  display: flex;
 `;
 
 List.ItemAside = styled.div`
   float: right;
   display: inline-block;
+  text-align: right;
 `;
 
 List.ItemInput = styled.input`
-  font-size: 16px;
+  font-size: ${textStyle.smallText};
   background: ${palette.secondaryLight};
   color: ${palette.secondary};
+  flex-grow: 1;
+  width: 50%;
   border-top: none;
   border-right: none;
   border-left: none;
-  width: 50%;
-  flex-grow: 1;
 `;
 
 List.ItemText = styled.div`

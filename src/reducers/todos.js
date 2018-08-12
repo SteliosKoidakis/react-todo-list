@@ -1,4 +1,9 @@
-import { addTodoType, deleteTodoType, editTodoType } from '../actions/types';
+import {
+  addTodoType,
+  deleteTodoType,
+  editTodoType,
+  completeTodoType
+} from '../actions/types';
 
 import updateItemInArray from '../helpers';
 
@@ -9,13 +14,27 @@ const todos = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          text: action.text
+          text: action.text,
+          complete: false
         }
       ];
     case deleteTodoType:
       return state.filter(({ id }) => id !== action.id);
     case editTodoType: {
-      const item = { id: action.id, text: action.text };
+      const item = {
+        id: action.id,
+        text: action.text,
+        complete: action.complete
+      };
+      const newState = updateItemInArray(item, state);
+      return [...newState];
+    }
+    case completeTodoType: {
+      const item = {
+        id: action.id,
+        text: action.text,
+        complete: !action.complete
+      };
       const newState = updateItemInArray(item, state);
       return [...newState];
     }

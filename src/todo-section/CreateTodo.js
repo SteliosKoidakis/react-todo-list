@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addTodo } from '../actions';
+import { addTodo as addItem } from '../actions';
 import { InputGroup } from '../stelios-ui';
 
 export class CreateTodo extends React.Component {
@@ -43,7 +43,7 @@ CreateTodo.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addTodo: text => dispatch(addTodo(text))
+  addTodo: text => dispatch(addItem(text))
 });
 
 export default connect(

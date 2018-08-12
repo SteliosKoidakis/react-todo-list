@@ -2,7 +2,11 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
-import { deleteTodo, editTodo } from '../actions';
+import {
+  deleteTodo as deleteItem,
+  editTodo as editItem,
+  completeTodo as completeItem
+} from '../actions';
 import { Button, List } from '../stelios-ui';
 
 export class Todo extends React.Component {
@@ -37,15 +41,20 @@ export class Todo extends React.Component {
   saveTodo = () => {
     const { todo } = this.state;
     const { item, editTodo } = this.props;
-    editTodo(item.id, todo);
+    editTodo(item.id, todo, item.complete);
     this.setState({ edit: false });
+  };
+
+  changeTodoStatus = () => {
+    const { item, completeTodo } = this.props;
+    completeTodo(item.id, item.text, item.complete);
   };
 
   render() {
     const { item } = this.props;
     const { edit } = this.state;
     return (
-      <List.Item onClick={!edit ? this.editTodo : null}>
+      <List.Item>
         {edit ? (
           <List.ItemInput
             type="text"
@@ -57,6 +66,15 @@ export class Todo extends React.Component {
           <List.ItemText>{item.text}</List.ItemText>
         )}
         <List.ItemAside>
+          {!edit && (
+            <Button
+              status
+              onClick={this.changeTodoStatus}
+              complete={item.complete ? item.complete : null}
+            >
+              {item.complete ? 'Done' : 'Not'}
+            </Button>
+          )}
           {edit && (
             <Button remove onClick={this.cancelEdit}>
               Cancel
@@ -78,12 +96,15 @@ export class Todo extends React.Component {
 
 Todo.propTypes = {
   item: PropTypes.object.isRequired,
-  deleteTodo: PropTypes.func.isRequired
+  deleteTodo: PropTypes.func.isRequired,
+  editTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  deleteTodo: id => dispatch(deleteTodo(id)),
-  editTodo: (id, text) => dispatch(editTodo(id, text))
+  deleteTodo: id => dispatch(deleteItem(id)),
+  editTodo: (id, text) => dispatch(editItem(id, text)),
+  completeTodo: (id, text, complete) => dispatch(completeItem(id, text, complete))
 });
 
 export default connect(

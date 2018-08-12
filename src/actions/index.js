@@ -1,4 +1,9 @@
-import { addTodoType, deleteTodoType, editTodoType } from './types';
+import {
+  addTodoType,
+  deleteTodoType,
+  editTodoType,
+  completeTodoType
+} from './types';
 
 let nextTodoId = 0;
 
@@ -13,8 +18,16 @@ export const deleteTodo = id => ({
   id
 });
 
-export const editTodo = (id, text) => ({
+export const editTodo = (id, text, complete) => ({
   type: editTodoType,
   id,
-  text
+  text,
+  complete
+});
+
+export const completeTodo = (id, text, complete) => ({
+  type: completeTodoType,
+  id,
+  text,
+  complete
 });
