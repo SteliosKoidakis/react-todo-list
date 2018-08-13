@@ -5,8 +5,8 @@
 - React
 - Redux
 - Styled-components
-- Styled-components
 - Prop-types
+- Redux thunk
 - Enzyme
 - Jest
 - EsLint
@@ -16,7 +16,7 @@
 
 ## Run the project
 
-- clone repository
+- clone repository_link
 - yarn
 - yarn start
   - yarn run test (run tests)
