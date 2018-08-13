@@ -14,7 +14,7 @@ const http = (data, type, dispatch, receiveTodos) => {
     .then(response => {
       if (response.status >= 400) {
         // TODO failure action
-        console.log('error');
+        console.log('error'); // eslint-disable-line
       }
       return response.json();
     })

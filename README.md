@@ -1,13 +1,23 @@
-## create react app
+# Todo List App
 
-## redux
+## Technology stack
 
-## prop types
+- React
+- Redux
+- Styled-components
+- Styled-components
+- Prop-types
+- Enzyme
+- Jest
+- EsLint
+- Pretier
+- Create react app
+- Mockapi (https://www.mockapi.io/)
 
-## eslint airbnb rules
+## Run the project
 
-## prettier
-
-## enzyme & jest
-
-## styled component
+- clone repository
+- yarn
+- yarn start
+  - yarn run test (run tests)
+  - yarn lint (test eslint rules)

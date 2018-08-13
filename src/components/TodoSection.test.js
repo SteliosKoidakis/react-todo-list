@@ -18,7 +18,7 @@ describe('Todo-section component', () => {
   });
 
   it('Render one <Todo />', () => {
-    wrapper.setProps({ todos: [{ id: 1, text: 'test' }] });
+    wrapper.setProps({ todos: [{ id: '1', text: 'test' }] });
     expect(wrapper.find(Todo)).toHaveLength(1);
   });
 

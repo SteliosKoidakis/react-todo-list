@@ -7,7 +7,7 @@ import { InputGroup } from '../stelios-ui';
 describe('CreateTodo component', () => {
   let wrapper;
   beforeAll(() => {
-    wrapper = shallow(<CreateTodo addTodo={() => {}} />);
+    wrapper = shallow(<CreateTodo createTodo={() => {}} />);
   });
   it('Renders a <InputGroup.Input /> components', () => {
     expect(wrapper.find(InputGroup.Input)).toHaveLength(1);

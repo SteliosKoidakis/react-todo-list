@@ -6,15 +6,10 @@ import { List } from '../stelios-ui';
 
 describe('Todo component', () => {
   let wrapper;
-  const item = { text: 'test', id: 1, completeTodo: false };
+  const item = { text: 'test', id: '1', completeTodo: false };
   beforeAll(() => {
     wrapper = shallow(
-      <Todo
-        item={item}
-        editTodo={() => {}}
-        deleteTodo={() => {}}
-        completeTodo={() => {}}
-      />
+      <Todo item={item} removeTodo={() => {}} updateTodo={() => {}} />
     );
   });
   it('Renders a <Lits.Item /> component', () => {
