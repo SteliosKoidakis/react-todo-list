@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { CreateTodo } from './CreateTodo';
+import CreateTodo from './CreateTodo';
 import { InputGroup } from '../stelios-ui';
 
 describe('CreateTodo component', () => {

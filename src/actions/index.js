@@ -1,33 +1,46 @@
-import {
-  addTodoType,
-  deleteTodoType,
-  editTodoType,
-  completeTodoType
-} from './types';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, RECEIVE_TODOS } from './types';
 
-let nextTodoId = 0;
+import http from '../helpers/http';
 
-export const addTodo = text => ({
-  type: addTodoType,
-  id: nextTodoId++,
-  text
+const addTodo = ({ id, text, complete }) => ({
+  type: ADD_TODO,
+  id,
+  text,
+  complete
 });
 
-export const deleteTodo = id => ({
-  type: deleteTodoType,
+const deleteTodo = ({ id }) => ({
+  type: DELETE_TODO,
   id
 });
 
-export const editTodo = (id, text, complete) => ({
-  type: editTodoType,
+const editTodo = ({ id, text, complete }) => ({
+  type: EDIT_TODO,
   id,
   text,
   complete
 });
 
-export const completeTodo = (id, text, complete) => ({
-  type: completeTodoType,
-  id,
-  text,
-  complete
+const receiveTodos = todos => ({
+  type: RECEIVE_TODOS,
+  todos
 });
+
+export const fetchTodos = () => dispatch => {
+  http(null, 'GET', dispatch, receiveTodos);
+};
+
+export const updateTodo = (id, text, complete) => dispatch => {
+  const requestoBody = { id, text, complete };
+  return http(requestoBody, 'PUT', dispatch, editTodo);
+};
+
+export const removeTodo = id => dispatch => {
+  const requestoBody = { id };
+  return http(requestoBody, 'DELETE', dispatch, deleteTodo);
+};
+
+export const createTodo = text => dispatch => {
+  const requestoBody = { text, complete: false };
+  return http(requestoBody, 'POST', dispatch, addTodo);
+};

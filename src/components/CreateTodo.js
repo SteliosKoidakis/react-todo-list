@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addTodo as addItem } from '../actions';
 import { InputGroup } from '../stelios-ui';
 
-export class CreateTodo extends React.Component {
+export default class CreateTodo extends React.Component {
   state = {
     todo: ''
   };
@@ -16,8 +14,8 @@ export class CreateTodo extends React.Component {
 
   submitTodo = () => {
     const { todo } = this.state;
-    const { addTodo } = this.props;
-    addTodo(todo);
+    const { createTodo } = this.props;
+    createTodo(todo);
   };
 
   render() {
@@ -39,14 +37,5 @@ export class CreateTodo extends React.Component {
 }
 
 CreateTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  createTodo: PropTypes.func.isRequired
 };
-
-const mapDispatchToProps = dispatch => ({
-  addTodo: text => dispatch(addItem(text))
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(CreateTodo);

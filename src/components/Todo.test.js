@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Todo } from './Todo';
+import Todo from './Todo';
 import { List } from '../stelios-ui';
 
 describe('Todo component', () => {

@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import reducers from './reducers';
-import AppSection from './todo-section';
+import TodoSection from './containers/TodoSection';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppSection />
+    <TodoSection />
   </Provider>,
   document.getElementById('root')
 );

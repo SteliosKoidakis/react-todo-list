@@ -1,11 +1,6 @@
 import reducer from './todos';
 
-import {
-  addTodoType,
-  deleteTodoType,
-  editTodoType,
-  completeTodoType
-} from '../actions/types';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO } from '../actions/types';
 
 describe('Todo reducer', () => {
   const state = [
@@ -19,8 +14,9 @@ describe('Todo reducer', () => {
   it('Add a new todo', () => {
     const action = {
       id: 1,
-      type: addTodoType,
-      text: 'test'
+      type: ADD_TODO,
+      text: 'test',
+      complete: false
     };
     expect(reducer(undefined, action)).toEqual([
       {
@@ -33,7 +29,7 @@ describe('Todo reducer', () => {
   it('Delete a todo', () => {
     const action = {
       id: 1,
-      type: deleteTodoType
+      type: DELETE_TODO
     };
     expect(reducer(state, action)).toEqual([
       { id: 2, text: 'test', complete: true }
@@ -44,7 +40,7 @@ describe('Todo reducer', () => {
     const action = {
       id: 1,
       text: 'new text',
-      type: editTodoType,
+      type: EDIT_TODO,
       complete: false
     };
     expect(reducer(state, action)).toEqual([
@@ -57,8 +53,8 @@ describe('Todo reducer', () => {
     const action = {
       id: 1,
       text: 'test',
-      type: completeTodoType,
-      complete: false
+      type: EDIT_TODO,
+      complete: true
     };
     expect(reducer(state, action)).toEqual([
       { id: 1, text: 'test', complete: true },

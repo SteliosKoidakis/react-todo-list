@@ -1,15 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { connect } from 'react-redux';
 
-import {
-  deleteTodo as deleteItem,
-  editTodo as editItem,
-  completeTodo as completeItem
-} from '../actions';
 import { Button, List } from '../stelios-ui';
 
-export class Todo extends React.Component {
+export default class Todo extends React.Component {
   state = {
     edit: false,
     todo: ''
@@ -21,8 +15,8 @@ export class Todo extends React.Component {
 
   removeTodo = () => {
     const { item } = this.props;
-    const { deleteTodo } = this.props;
-    deleteTodo(item.id);
+    const { removeTodo } = this.props;
+    removeTodo(item.id);
   };
 
   editTodo = () => {
@@ -40,14 +34,14 @@ export class Todo extends React.Component {
 
   saveTodo = () => {
     const { todo } = this.state;
-    const { item, editTodo } = this.props;
-    editTodo(item.id, todo, item.complete);
+    const { item, updateTodo } = this.props;
+    updateTodo(item.id, todo, item.complete);
     this.setState({ edit: false });
   };
 
   changeTodoStatus = () => {
-    const { item, completeTodo } = this.props;
-    completeTodo(item.id, item.text, item.complete);
+    const { item, updateTodo } = this.props;
+    updateTodo(item.id, item.text, !item.complete);
   };
 
   render() {
@@ -96,18 +90,6 @@ export class Todo extends React.Component {
 
 Todo.propTypes = {
   item: PropTypes.object.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
-  editTodo: PropTypes.func.isRequired,
-  completeTodo: PropTypes.func.isRequired
+  removeTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired
 };
-
-const mapDispatchToProps = dispatch => ({
-  deleteTodo: id => dispatch(deleteItem(id)),
-  editTodo: (id, text) => dispatch(editItem(id, text)),
-  completeTodo: (id, text, complete) => dispatch(completeItem(id, text, complete))
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Todo);
