@@ -13,6 +13,7 @@ List.Item = styled.li`
   line-height: 40px;
   font-weight: ${textStyle.boldWeight};
   display: flex;
+  flex-direction: column;
   padding: 0 30px;
   margin-bottom: 10px;
   background: ${palette.secondaryLight};
@@ -21,6 +22,9 @@ List.Item = styled.li`
   cursor: pointer;
   transition: all 300ms ease;
   box-sizing: border-box;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 List.ItemAside = styled.div`
@@ -30,18 +34,22 @@ List.ItemAside = styled.div`
 `;
 
 List.ItemInput = styled.input`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  line-height: 40px;
   font-size: ${textStyle.smallText};
   background: ${palette.secondaryLight};
+  padding: 0;
   color: ${palette.secondary};
   flex-grow: 1;
-  width: 50%;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border: none;
+  border-bottom: 1px solid ${palette.secondary};
 `;
 
 List.ItemText = styled.div`
   flex-grow: 1;
+  border-bottom: 1px solid transparent;
 `;
 
 export default List;

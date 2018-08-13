@@ -23,7 +23,6 @@ const Button = styled.button`
         return palette.secondary;
     }
   }};
-  border: border-top: 2px solid transparent;;
   border-radius: 4px;
   color: ${palette.white};
   cursor: pointer;
