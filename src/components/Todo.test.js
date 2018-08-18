@@ -12,6 +12,7 @@ describe('Todo component', () => {
       <Todo item={item} removeTodo={() => {}} updateTodo={() => {}} />
     );
   });
+
   it('Renders a <Lits.Item /> component', () => {
     expect(wrapper.find(List.Item)).toHaveLength(1);
   });

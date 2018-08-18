@@ -18,9 +18,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test-coverage": "yarn test --coverage",
+    "test": "react-scripts test --env=jsdom ",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint src"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

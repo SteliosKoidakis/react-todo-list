@@ -1,6 +1,11 @@
 import reducer from './todos';
 
-import { ADD_TODO, DELETE_TODO, EDIT_TODO } from '../actions/types';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  EDIT_TODO,
+  RECEIVE_TODOS
+} from '../actions/types';
 
 describe('Todo reducer', () => {
   const state = [
@@ -11,7 +16,7 @@ describe('Todo reducer', () => {
     expect(reducer(undefined, {})).toEqual([]);
   });
 
-  it('Add a new todo', () => {
+  it('Add a new todo in an empty state', () => {
     const action = {
       id: '1',
       type: ADD_TODO,
@@ -26,6 +31,23 @@ describe('Todo reducer', () => {
       }
     ]);
   });
+
+  it('Add a new todo in a no empty state', () => {
+    const action = {
+      id: '1',
+      type: ADD_TODO,
+      text: 'test',
+      complete: false
+    };
+    const finalState = state;
+    finalState.push({
+      id: '1',
+      text: 'test',
+      complete: false
+    });
+    expect(reducer(state, action)).toEqual(finalState);
+  });
+
   it('Delete a todo', () => {
     const action = {
       id: '1',
@@ -60,5 +82,13 @@ describe('Todo reducer', () => {
       { id: '1', text: 'test', complete: true },
       { id: '2', text: 'test', complete: true }
     ]);
+  });
+
+  it('Fetch todos list', () => {
+    const action = {
+      type: RECEIVE_TODOS,
+      todos: state
+    };
+    expect(reducer(state, action)).toEqual(state);
   });
 });

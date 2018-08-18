@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier/react"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "env": {
     "browser": true,
@@ -13,6 +13,6 @@
     "comma-dangle": "off",
     "react/forbid-prop-types": "off",
     "arrow-parens": "off",
-    "linebreak-style":"off"
+    "linebreak-style": "off"
   }
 }
