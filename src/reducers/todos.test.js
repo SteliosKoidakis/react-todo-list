@@ -34,14 +34,14 @@ describe('Todo reducer', () => {
 
   it('Add a new todo in a no empty state', () => {
     const action = {
-      id: '1',
+      id: '3',
       type: ADD_TODO,
       text: 'test',
       complete: false
     };
-    const finalState = state;
+    const finalState = [...state];
     finalState.push({
-      id: '1',
+      id: '3',
       text: 'test',
       complete: false
     });

@@ -5,7 +5,8 @@ import palette from '../palette';
 import textStyle from '../text-styles';
 
 const Button = styled.button`
-  font-size: ${({ remove }) => remove ? textStyle.smallerText : textStyle.smallText};
+  font-size: ${({ remove }) =>
+    remove ? textStyle.smallerText : textStyle.smallText};
   font-weight: ${textStyle.lightWeight};
   line-height: ${({ remove, status }) => (remove || status ? '20px' : '40px')};
   display: inline-block;
