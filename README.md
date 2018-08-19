@@ -17,7 +17,9 @@
 ## Run the project
 
 - clone repository_link
-- yarn
-- yarn start
-  - yarn run test (run tests)
-  - yarn lint (test eslint rules)
+- yarn : install dependancies from package.json
+- yarn start : start development server
+  - yarn run test : run test watch mode, run test that early have been changed
+  - yarn run test (reducers || components || helpers ): run test of specific folder
+  - yarn run test-coverage : run test coverage report
+  - yarn run lint : run linting result
